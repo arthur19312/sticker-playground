@@ -13,19 +13,13 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["pages/*"],
-      "@@/*": ["components/*"],
-      "@store/*": ["store/*"],
-      "@store": [
-        "store/index"
-      ],
-      "@constants/*":["constants/*"]
+      "@/*": ["*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js", "pages/_app.js"],
   "exclude": ["node_modules"]
 }

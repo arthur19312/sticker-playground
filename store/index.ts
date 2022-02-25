@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ImgSrcListReducer from "@store/imgSrcList";
+import ImgSrcListReducer from "@/store/imgSrcList";
+import StorageConfigReducer from "@/store/storageConfig";
 
 export const store = configureStore({
   reducer: {
     imgSrcList: ImgSrcListReducer,
+    storageConfig: StorageConfigReducer,
   },
 });
 

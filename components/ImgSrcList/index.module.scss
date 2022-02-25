@@ -7,11 +7,9 @@
 }
 
 .listItem {
-    margin-bottom: 1rem;
     width: 4rem;
     height: 4rem;
-    border: 1px #888 solid;
-    border-radius: 1rem;
+    @extend .card;
     cursor: pointer;
 }
 
@@ -29,17 +27,54 @@
         align-items: center;
         justify-content: center;
         background: #fff;
-        pointer-events: none;
     }
 
     .input {
-        @extend .listItem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        margin-top: -2rem;
-        height: 6rem;
-        opacity: 0;
+        display: none;
     }
+}
+
+.itemContainer {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+}
+
+.img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    @extend .listItem;
+}
+
+.dot {
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.cross {
+    position: absolute;
+    left: calc(100% - 0.7rem);
+    top: -0.3rem;
+    z-index: 2;
+    @extend .dot;
+    @extend .card;
+    background-color: #fff;
+    transform: rotate(45deg);
+}
+
+.add {
+    position: absolute;
+    left: calc(100% - 0.7rem);
+    top: calc(100% - 0.7rem);
+    z-index: 2;
+    @extend .dot;
+    @extend .card;
+    background-color: #fff;
 }

@@ -1,12 +1,21 @@
-import { RootState } from "@store";
+import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addItem } from "@store/imgSrcList";
-import ImgSrcItem from "@@/ImgSrcList/ImgSrcItem";
+import { RootState } from "@/store";
+import { addItem, deleteItem } from "@/store/imgSrcList";
+import ImgSrcItem from "@/components/ImgSrcList/ImgSrcItem";
 import styles from "./index.module.scss";
 
 function ImgSrcList() {
   const imgSrcList = useSelector((state: RootState) => state.imgSrcList);
   const dispatch = useDispatch();
+
+  const inputRef = useRef(null);
+
+  const [list, setList] = useState(imgSrcList);
+  useEffect(() => {
+    console.log(imgSrcList);
+    setList(imgSrcList);
+  }, [imgSrcList.length]);
 
   const addImgSrc = (files: FileList | null) => {
     const fileList = Array.prototype.slice.call(files);
@@ -25,11 +34,23 @@ function ImgSrcList() {
     });
   };
 
+  const deleteImg = (id: string) => {
+    dispatch(deleteItem(id));
+  };
+
   const addButton = (
     <div className={styles.inputContainer}>
-      <div className={styles.addButton}>+</div>
+      <div
+        className={styles.addButton}
+        onClick={() => {
+          inputRef.current?.click();
+        }}
+      >
+        +
+      </div>
       <input
         className={styles.input}
+        ref={inputRef}
         type="file"
         accept="image/*"
         multiple
@@ -42,8 +63,8 @@ function ImgSrcList() {
 
   return (
     <div className={styles.listContainer}>
-      {imgSrcList.map((item) => (
-        <ImgSrcItem {...item} />
+      {list.map((item) => (
+        <ImgSrcItem key={item.id} img={item} deleteImg={deleteImg} />
       ))}
       {addButton}
     </div>

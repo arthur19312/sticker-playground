@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ImgSrcItemType, ImgSrcListType } from "@constants/imgSrc";
+import { ImgSrcItemType, ImgSrcListType } from "@/constants/imgSrc";
 
 const initialState: ImgSrcListType = [];
 

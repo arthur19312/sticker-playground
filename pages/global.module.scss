@@ -1,0 +1,8 @@
+.border {
+    border: #888 1px solid;
+}
+
+.card {
+    @extend .border;
+    border-radius: 1rem;
+}

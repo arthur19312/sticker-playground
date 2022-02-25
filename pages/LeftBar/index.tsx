@@ -1,9 +1,9 @@
-import ImgSrcList from "@@/ImgSrcList";
+import ImgSrcList from "@/components/ImgSrcList";
 import styles from "./index.module.css";
 
 function LeftBar() {
   return (
-    <div className={styles.container}>
+    <div>
       <ImgSrcList />
     </div>
   );
